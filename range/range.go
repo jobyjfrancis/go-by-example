@@ -3,31 +3,17 @@ package main
 import "fmt"
 
 func main() {
-
-	num := []int{1, 2, 3}
+	nums := []int{10, 20, 30, 40}
 	sum := 0
-	for _, i := range num {
-		sum += i
+	for _, num := range nums {
+		sum += num
 	}
-	fmt.Println("sum:", sum)
+	fmt.Println("Sum: ", sum)
 
-	for i, j := range num {
-		if j == 3 {
-			fmt.Printf("Index of %d: %d\n", j, i)
+	for i, num := range nums {
+		if num == 20 {
+			fmt.Println("Index of 20: ", i)
 		}
-	}
-
-	kvs := map[string]string{"a": "apple", "b": "banana"}
-	for i, j := range kvs {
-		fmt.Printf("%s --> %s\n", i, j)
-	}
-
-	for k := range kvs {
-		fmt.Println("Key:", k)
-	}
-
-	for i, c := range "Hello World" {
-		fmt.Println(i, c)
 	}
 
 }

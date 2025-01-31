@@ -16,4 +16,16 @@ func main() {
 		}
 	}
 
+	fruits := map[string]string{"a": "apple", "b": "banana"}
+	for letter, fruit := range fruits {
+		fmt.Printf("%s -> %s\n", letter, fruit)
+	}
+
+	for letter := range fruits {
+		fmt.Printf("Letter: %s\n", letter)
+	}
+
+	for i, s := range "go" {
+		fmt.Println(i, s)
+	}
 }

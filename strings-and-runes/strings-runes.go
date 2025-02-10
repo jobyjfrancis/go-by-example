@@ -7,6 +7,7 @@ import (
 
 func main() {
 	const s = "สวัสดี"
+	//const s = "Hello"
 
 	fmt.Println("Length of s:", len(s))
 
@@ -21,13 +22,14 @@ func main() {
 		fmt.Printf("%#U at index %d\n", runeValue, idx)
 	}
 
-	fmt.Println("Using DecodeRuneInString")
-	for i, w := 0, 0; i < len(s); i += w {
-		runeValue, width := utf8.DecodeRuneInString(s[i:])
-		fmt.Printf("%#U at index %d\n", runeValue, i)
-		w = width
+	fmt.Println("Decode rune in string")
 
-		examineRune(runeValue)
+	for i, w := 0, 0; i < len(s); i += w {
+		r, size := utf8.DecodeRuneInString(s[i:])
+		fmt.Printf("%#U starts at %d\n", r, i)
+		w = size
+
+		examineRune(r)
 	}
 }
 

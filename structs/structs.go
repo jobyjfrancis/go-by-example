@@ -2,29 +2,39 @@ package main
 
 import "fmt"
 
-type Person struct {
-	name    string
-	age     int
-	address string
+type person struct {
+	name string
+	age  int
+}
+
+func newPerson(name string) *person {
+	p := person{name: name}
+	p.age = 12
+	return &p
 }
 
 func main() {
-	var person1 Person
-	var person2 Person
+	fmt.Println(person{"Bob", 20})
+	fmt.Println(person{name: "John", age: 30})
+	fmt.Println(person{name: "Alex"})
+	fmt.Println(&person{"Alice", 40})
+	fmt.Println(newPerson("James"))
 
-	person1.name = "Alex"
-	person1.age = 30
-	person1.address = "30A Whitney Street"
+	s := person{name: "Koshy", age: 55}
+	fmt.Println(s.name)
 
-	person2.name = "Chris"
-	person2.age = 32
-	person2.address = "9 Newman Road Rolleston"
+	sp := &s
+	fmt.Println(sp.age)
 
-	fmt.Println("Person1 Name:", person1.name)
-	fmt.Println("Person1 Age:", person1.age)
-	fmt.Println("Person1 address:", person1.address)
+	sp.age = 57
+	fmt.Println(sp.age)
 
-	fmt.Println("Person2 Name:", person2.name)
-	fmt.Println("Person2 Age:", person2.age)
-	fmt.Println("Person2 address:", person2.address)
+	dog := struct {
+		name   string
+		isGood bool
+	}{
+		"Rex",
+		true,
+	}
+	fmt.Println(dog)
 }

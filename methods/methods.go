@@ -11,15 +11,15 @@ func (r *rectangle) area() int {
 }
 
 func (r rectangle) perimeter() int {
-	return 2*r.width + 2*r.height
+	return 2*r.height + 2*r.width
 }
 
 func main() {
-	r := rectangle{10, 20}
+	r := rectangle{width: 10, height: 20}
 	fmt.Println("Area:", r.area())
-	fmt.Println("Area:", r.perimeter())
+	fmt.Println("Perimeter:", r.perimeter())
 
 	rp := &r
 	fmt.Println("Area:", rp.area())
-	fmt.Println("Area:", rp.perimeter())
+	fmt.Println("Perimeter:", rp.perimeter())
 }

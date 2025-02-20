@@ -28,6 +28,7 @@ func (r rectangle) perimeter() float64 {
 
 func (c circle) area() float64 {
 	return math.Pi * c.radius * c.radius
+
 }
 
 func (c circle) perimeter() float64 {
@@ -47,8 +48,8 @@ func detectCircle(g geometry) {
 }
 
 func main() {
-	r := rectangle{width: 30, height: 20}
-	c := circle{radius: 5}
+	r := rectangle{100, 200}
+	c := circle{10}
 
 	measure(r)
 	measure(c)

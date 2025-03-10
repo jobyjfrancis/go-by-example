@@ -4,7 +4,7 @@ import "fmt"
 
 func SlicesIndex[S ~[]E, E comparable](s S, v E) int {
 	for i := range s {
-		if v == s[i] {
+		if s[i] == v {
 			return i
 		}
 	}
@@ -47,6 +47,5 @@ func main() {
 	lst.Push(10)
 	lst.Push(20)
 	lst.Push(30)
-	lst.Push(40)
 	fmt.Println("list:", lst.AllElements())
 }

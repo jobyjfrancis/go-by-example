@@ -10,9 +10,9 @@ type List[T any] struct {
 	head, tail *element[T]
 }
 
-type element [T]struct {
+type element[T any] struct {
 	next *element[T]
-	val  int
+	val  T
 }
 
 func (lst *List[T]) Push(v T) {

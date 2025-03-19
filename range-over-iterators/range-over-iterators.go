@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"iter"
-	"slices"
 )
 
 type List[T any] struct {
@@ -27,12 +26,10 @@ func (lst *List[T]) Push(v T) {
 
 func (lst *List[T]) All() iter.Seq[T] {
 	return func(yield func(T) bool) {
-
 		for e := lst.head; e != nil; e = e.next {
 			if !yield(e.val) {
 				return
 			}
-
 		}
 	}
 }
@@ -42,11 +39,10 @@ func main() {
 	lst.Push(10)
 	lst.Push(20)
 	lst.Push(30)
+	lst.Push(40)
+	lst.Push(50)
 
 	for e := range lst.All() {
 		fmt.Println(e)
 	}
-
-	all := slices.Collect(lst.All())
-	fmt.Println("all: ", all)
 }

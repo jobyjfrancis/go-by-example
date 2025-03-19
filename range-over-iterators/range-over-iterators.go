@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"iter"
+	"slices"
 )
 
 type List[T any] struct {
@@ -34,6 +35,19 @@ func (lst *List[T]) All() iter.Seq[T] {
 	}
 }
 
+func genFib() iter.Seq[int] {
+	return func(yield func(int) bool) {
+		a, b := 1, 1
+
+		for {
+			if !yield(a) {
+				return
+			}
+			a, b = b, a+b
+		}
+	}
+}
+
 func main() {
 	lst := List[int]{}
 	lst.Push(10)
@@ -44,5 +58,15 @@ func main() {
 
 	for e := range lst.All() {
 		fmt.Println(e)
+	}
+
+	all := slices.Collect(lst.All())
+	fmt.Println("all:", all)
+
+	for n := range genFib() {
+		fmt.Println(n)
+		if n >= 10 {
+			break
+		}
 	}
 }

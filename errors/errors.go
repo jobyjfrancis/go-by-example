@@ -12,14 +12,14 @@ func f(i int) (int, error) {
 	return i + 3, nil
 }
 
-var ErrOutOfTea = fmt.Errorf("no more tea available")
-var ErrPower = fmt.Errorf("can't boil water")
+var ErrOutOfTea = fmt.Errorf("No more tea available")
+var ErrPower = fmt.Errorf("can't boil water, no power")
 
-func makeTea(i int) error {
-	if i == 2 {
+func makeTea(arg int) error {
+	if arg == 2 {
 		return ErrOutOfTea
-	} else if i == 4 {
-		return fmt.Errorf("making tea: %w", ErrPower)
+	} else if arg == 4 {
+		return fmt.Errorf("making tea : %w", ErrPower)
 	}
 	return nil
 }
@@ -38,12 +38,12 @@ func main() {
 			if errors.Is(err, ErrOutOfTea) {
 				fmt.Println("We should buy new tea!")
 			} else if errors.Is(err, ErrPower) {
-				fmt.Println("Now it is dark")
+				fmt.Println("Now it is dark!")
 			} else {
 				fmt.Printf("unknown error: %s\n", err)
 			}
 			continue
 		}
-		fmt.Println("Tea is ready!")
+		fmt.Println("Tea is ready")
 	}
 }

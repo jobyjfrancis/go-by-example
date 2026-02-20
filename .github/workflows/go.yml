@@ -1,0 +1,17 @@
+name: Go
+on: [push]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Set up Go
+              uses: actions/setup-go@v6
+              with:
+                go-version: latest
+            - name: Build
+              run: cd arrays && go build -v arrays.go
+            - name: Run
+              run: go run arrays/arrays.go
+                
+              
